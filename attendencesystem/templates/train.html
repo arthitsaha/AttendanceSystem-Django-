@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <h1>Attendance Tracker</h1>
+                <ul class="navbar-nav">
+                    <!-- Logout button -->
+                    <li><a href="{% url 'attendencesystem:logout' %}">Logout</a></li>
+                    <!-- Add other navigation links here if needed -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+    <div class="container">
+        <!-- Title -->
+        <h2>Welcome to Your Dashboard</h2>
+        <!-- Description -->
+        <p>Here you can track attendance and manage user images.</p>
+        <!-- "Train your image" button -->
+        <form action="{% url 'attendencesystem:create_dataset' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-train">Train Your Image</button>
+        </form>
+        <!-- Home button -->
+        <a href="{% url 'attendencesystem:home' %}">
+            <button class="btn-home">Go to Home</button>
+        </a>
+    </div>
+</body>
+</html>
